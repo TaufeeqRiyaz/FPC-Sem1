@@ -1,35 +1,35 @@
-// C program to search a character in a string.
-
 #include <stdio.h>
 
-int main() {
-    int numElements;
+int main(){
 
-    printf("Enter the number of elements - ");
-    scanf("%d", &numElements);
+    int n;
+    printf("Enter the number of elements in the array - ");
+    scanf("%d", &n);
 
-    while ((getchar()) != '\n');
+    char arr[n];
+    char search;
 
-    char inputString[100];
+    for (int i = 0; i < n; i++){
+        printf("Enter element %d - ", i + 1);
+        scanf(" %c", &arr[i]);
+    }
 
-    printf("Enter the string - ");
-    
-    for (int i = 0; i < numElements; i++) {
-        printf("Enter element %d -", i + 1);
-        fgets(inputString, sizeof(inputString), stdin);
+    printf("Enter the element to search - ");
+    scanf(" %c", &search);
 
-        int j = 0;
-        while (inputString[j] != '\0') {
-            if (inputString[j] == '\n') {
-                inputString[j] = '\0';
-                break;
-            }
-            j++;
+    int index = -1;
+    for (int i = 0; i < n; i++){
+        if (arr[i] == search){
+            index = i;
+            break;
         }
+    }
 
-        convertToUpper(inputString);
-
-        printf("Element %d in uppercase: %s\n", i + 1, inputString);
+    if (index == -1){
+        printf("Element not found\n");
+    }
+    else {
+        printf("Element found at index %d\n", index);
     }
 
     return 0;
