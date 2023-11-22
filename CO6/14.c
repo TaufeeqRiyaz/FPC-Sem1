@@ -1,43 +1,17 @@
-#include <stdio.h>
+// C Program to convert the lower case letters to upper case in a given string without using strupp() function
 
-void convertToUpper(char *str) {
-    while (*str) {
-        if (*str >= 'a' && *str <= 'z') {
-            *str = *str - ('a' - 'A');
-        }
-        str++;
-    }
-}
+#include <stdio.h>
+#include <string.h>
 
 int main() {
-    int numElements;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &numElements);
-
-    while ((getchar()) != '\n');
-
-    char inputString[100];
-
-    printf("Enter the string: ");
-    
-    for (int i = 0; i < numElements; i++) {
-        printf("Enter element %d: ", i + 1);
-        fgets(inputString, sizeof(inputString), stdin);
-
-        int j = 0;
-        while (inputString[j] != '\0') {
-            if (inputString[j] == '\n') {
-                inputString[j] = '\0';
-                break;
-            }
-            j++;
+    char str[100];
+    printf("Enter a string - ");
+    scanf("%s", str);
+    for (int i = 0; i < strlen(str); i++) {
+        if (str[i] >= 'a' && str[i] <= 'z') {
+            str[i] -= 32;
         }
-
-        convertToUpper(inputString);
-
-        printf("Element %d in uppercase: %s\n", i + 1, inputString);
     }
-
+    printf("The string in upper case is - %s", str);
     return 0;
 }
